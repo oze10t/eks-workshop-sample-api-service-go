@@ -14,6 +14,7 @@ phases:
         - sed -i 's@CONTAINER_IMAGE@'"$REPOSITORY_URI:$TAG"'@' hello-k8s1.yml
         - $(aws ecr get-login --no-include-email)
         - export KUBECONFIG=$HOME/.kube/config
+        - sonar-scanner -Dsonar.projectKey=MyGo -Dsonar.sources=. -Dsonar.host.url=http://ip-192-168-2-44.ap-southeast-1.compute.internal:9000 -Dsonar.login=d9ffb1698b93b9b1fbc208de4d78c7ed5ecf8007
   build:
     commands:
       - docker build --tag $REPOSITORY_URI:$TAG .
