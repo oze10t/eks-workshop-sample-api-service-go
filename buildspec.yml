@@ -3,6 +3,9 @@ version: 0.2
 phases:
   install:
     commands:
+      - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip 
+      - unzip sonar-scanner-cli-3.3.0.1492-linux.zip 
+      - export PATH=$PATH:./sonar-scanner-3.3.0.1492-linux/bin/ 
       - curl -sS -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/aws-iam-authenticator
       - curl -sS -o kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.10.3/2018-07-26/bin/linux/amd64/kubectl
       - chmod +x ./kubectl ./aws-iam-authenticator
